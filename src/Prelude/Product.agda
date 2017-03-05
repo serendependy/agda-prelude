@@ -28,6 +28,9 @@ A × B = Σ A (λ _ → B)
 _,′_ : ∀ {a b} {A : Set a} {B : Set b} → A → B → A × B
 _,′_ = _,_
 
+swap : ∀ {a b} {A : Set a} {B : Set b} → A × B → B × A
+swap (x , y) = (y , x)
+
 uncurry : ∀ {a b c} {A : Set a} {B : A → Set b} {C : ∀ x → B x → Set c} →
             (∀ x (y : B x) → C x y) → (p : Σ A B) → C (fst p) (snd p)
 uncurry f (x , y) = f x y
